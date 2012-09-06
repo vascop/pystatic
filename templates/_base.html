@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset={{ site.charset|default:"utf-8" }}" />
+    <meta http-equiv="Content-Language" content="{{ site.lang|default:"en-us" }}" />
+    <title>{% block title %}{{ site.title.title|default:"Title" }}{{ site.title.title_separator|default:" - " }}{{ site.title.subtitle|default:"Subtitle" }}{% endblock %}</title>
+    <link rel="canonical" href="{{ site.base_url }}" />
+    <meta name="viewport" content="{{ site.viewport|default:"width=device-width, initial-scale=1.0" }}" />
+    <meta name="description" content="{% block description %}{{ site.description }}{% endblock %}" />
+    <meta name="keywords" content="{% block keywords %}{% for kw in site.keywords %}{{ kw }},{% endfor %}{% endblock %}" />
+
+    <link type="image/x-icon" href="{{ assets.favicon|default:"favicon.ico" }}" rel="shortcut icon"/>
+
+    {% for font in assets.gfonts %}
+        <link href='http://fonts.googleapis.com/css?family={{ font }}' rel='stylesheet' type='text/css'>
+    {% endfor %}
+
+    {% for css in assets.css_list %}
+        <link type="text/css" rel="stylesheet" href="./{{ assets.base_url }}/{{ assets.css_path }}/{{ css }}" />
+    {% endfor %}
+
+    {% block header_content %}{% endblock %}
+
+    {% block html5shim %}
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    {% endblock %}
+
+    {% if site.analytics %}
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', '{{ site.analytics }}']);
+            _gaq.push(['_trackPageview']);
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    {% endif %}
+</head>
+
+<body>
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+{% block endscripts %}
+    {% for js in assets.js_list %}
+        <script type="text/javascript" src="./{{ assets.base_url }}/{{ assets.js_path }}/{{ js }}"></script>
+    {% endfor %}
+{% endblock %}
+<script>$(document).ready(function(){ {% block onloadscripts %}{% endblock %} });</script>
+</body>
+</html>

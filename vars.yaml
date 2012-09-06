@@ -1,0 +1,32 @@
+site:
+    base_url: "http://www.mysite.com/"
+    title:
+        title: "Site title"
+        subtitle: "I like turtles, yo"
+    description: "My site is totally awesome because I say so."
+    keywords: [
+        "awesome",
+        "site",
+        "wow"
+    ]
+    analytics: UA-123
+
+assets:
+    base_url: "assets"
+    img_path: "img"
+
+    gfonts : [
+        "Droid+Sans:400,700",
+    ]
+
+    css_path: "css"
+    css_list: [
+        "bootstrap.css",
+        "custom.css"
+    ]
+    js_path: "js"
+    js_list: [
+        "jquery-1.8.1.min.js",
+    ]
+
+name: Vasc

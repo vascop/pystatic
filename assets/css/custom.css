@@ -1,0 +1,9 @@
+body {
+    font: 0.85em "Droid Sans","Helvetica Neue",Helvetica,sans-serif;
+    line-height: 1.5em;
+    padding-top: 60px;
+}
+
+h1 {
+    font-size: 2.8em;
+}
