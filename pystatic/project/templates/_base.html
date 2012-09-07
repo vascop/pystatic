@@ -15,7 +15,7 @@
     {% endfor %}
 
     {% for css in assets.css_list %}
-        <link type="text/css" rel="stylesheet" href="./{{ assets.base_url }}/{{ assets.css_path }}/{{ css }}" />
+        <link type="text/css" rel="stylesheet" href="./{{ assets.css_path }}{{ css }}" />
     {% endfor %}
 
     {% block header_content %}{% endblock %}
@@ -42,12 +42,13 @@
 
 <body>
 <div class="container">
+    <h1>HEADLINE</h1><br /><br />
     {% block content %}{% endblock %}
 </div>
 
 {% block endscripts %}
     {% for js in assets.js_list %}
-        <script type="text/javascript" src="./{{ assets.base_url }}/{{ assets.js_path }}/{{ js }}"></script>
+        <script type="text/javascript" src="./{{ assets.js_path }}{{ js }}"></script>
     {% endfor %}
 {% endblock %}
 <script>$(document).ready(function(){ {% block onloadscripts %}{% endblock %} });</script>
