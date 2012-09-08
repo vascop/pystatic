@@ -13,18 +13,20 @@ site:
 
 assets:
     base_url: "assets"
-    img_path: "img"
+    img_path: "assets/img/"
 
     gfonts : [
         "Droid+Sans:400,700",
     ]
 
-    css_path: "css"
+    css_path: "assets/css/"
     css_list: [
         "bootstrap.css",
         "custom.css"
     ]
-    js_path: "js"
+    js_path: "assets/js/"
     js_list: [
         "jquery-1.8.1.min.js",
     ]
+
+name: HipsterBro

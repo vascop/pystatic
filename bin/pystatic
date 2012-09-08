@@ -1,0 +1,5 @@
+#!/usr/bin/python
+import pystatic.pystatic as pystatic
+
+if __name__ == "__main__":
+    pystatic.main()

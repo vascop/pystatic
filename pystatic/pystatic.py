@@ -47,6 +47,9 @@ class EventHandler(pyinotify.ProcessEvent):
         if event.name.endswith('kate-swp') or event.name.endswith('~') or event.name.startswith('.') or event.name.startswith('qt_temp'):
             return
 
+        print event.path
+        print CONF
+
         if event.path == CONF:
             self.vard = getvars()
         if event.path == CONF or event.path == ASSETS:
@@ -81,6 +84,7 @@ def runserver(first=False):
     httpd.server_bind()
     httpd.server_activate()
     t = threading.Thread(target=httpd.serve_forever)
+    t.daemon = True
     t.start()
     if first:
         print "[{}] Live at http://{}:{}".format(strftime("%H:%M:%S", localtime()), HOST, PORT)
@@ -93,10 +97,14 @@ def getvars():
     return vard
 
 def setupshop():
-    shutil.copytree(path.join(SETUP, "templates"), TEMPLATES)
-    shutil.copytree(path.join(SETUP, "assets"), ASSETS)
-    shutil.copytree(path.join(SETUP, "conf"), CONF)
-    shutil.copytree(path.join(SETUP, "output"), OUTPUT)
+    if not path.exists(TEMPLATES):
+        shutil.copytree(path.join(SETUP, "templates"), TEMPLATES)
+    if not path.exists(ASSETS):
+        shutil.copytree(path.join(SETUP, "assets"), ASSETS)
+    if not path.exists(CONF):
+        shutil.copytree(path.join(SETUP, "conf"), CONF)
+    if not path.exists(OUTPUT):
+        shutil.copytree(path.join(SETUP, "output"), OUTPUT)
 
 def addassets():
     asset_dir = path.join(OUTPUT, "assets")
@@ -121,11 +129,13 @@ def build_templates(vard):
             f.close()
             #print "Built", path
 
-
-if __name__ == "__main__":
+def main():
     wm = pyinotify.WatchManager()
     handler = EventHandler()
     notifier = pyinotify.Notifier(wm, handler)
     mask = pyinotify.IN_CLOSE_WRITE | pyinotify.IN_MOVED_TO | pyinotify.IN_MOVED_FROM | pyinotify.IN_CREATE | pyinotify.IN_DELETE | pyinotify.IN_ATTRIB
     wm.add_watch([ASSETS, CONF, TEMPLATES], mask, auto_add=True, rec=True)
     notifier.loop()
+
+if __name__ == "__main__":
+    main()
