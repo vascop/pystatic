@@ -5,3 +5,5 @@ Generates static websites using Django's Templating Engine
 You can make use of variables, template inheritance and filters
 which greatly speed up development and facilitate maintenance.
 Has a simple server for local development
+
+To install: pip install pystatic
