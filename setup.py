@@ -20,7 +20,7 @@ setup(
             "pystatic/project/assets/fonts/*.woff",
         ]
     },
-    version = "0.1.20",
+    version = "0.1.23",
     description = "Static Website Generator",
     author = "Vasco Pinho",
     author_email = "vascogpinho@gmail.com",
@@ -30,6 +30,7 @@ setup(
     install_requires=[
         "Django >= 1.4.1",
         "pyinotify >= 0.8.9",
+        "pyyaml"
     ],
     license='LICENSE',
     classifiers = [
