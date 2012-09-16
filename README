@@ -1,9 +1,33 @@
+========================
 Static Website Generator
-------------------------
+========================
 
 Generates static websites using Django's Templating Engine
 You can make use of variables, template inheritance and filters
 which greatly speed up development and facilitate maintenance.
-Has a simple server for local development
+Has a simple server for local development.
 
-To install: pip install pystatic
+To install
+----------
+
+    pip install pystatic
+
+How to use
+----------
+
+Note: Command arguments between <> are optional.
+
+Start a project with the default project structure. This structure is not to be changed.
+
+    pystatic init
+
+Start a server to preview your project. The server will auto-reload changes and run at http://localhost:12321 by default.
+
+    pystatic server
+
+Build your project from the templates variables and data, once.
+
+    pystatic build
+
+The directory structure is not to be changed. All variables present in conf/vars.yaml will be available for templating.
+There's currently no other data store.

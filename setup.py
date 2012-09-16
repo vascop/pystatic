@@ -20,7 +20,7 @@ setup(
             "pystatic/project/assets/fonts/*.woff",
         ]
     },
-    version = "0.1.23",
+    version = "0.2.0",
     description = "Static Website Generator",
     author = "Vasco Pinho",
     author_email = "vascogpinho@gmail.com",
